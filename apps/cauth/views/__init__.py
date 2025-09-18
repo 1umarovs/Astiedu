@@ -1,0 +1,1 @@
+from .registration_view import login_view, registration_view, logout_view
