@@ -3,6 +3,15 @@
 {% block content %}
         <div class="main flex-fill">
             <main class="container">
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} d-flex justify-content-between align-items-center" role="alert">
+                    {{ message }}
+
+                    <button type="button" class="btn-close p-3" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor %}
+                {% endif %}
                 <section class="user" id="user">
                     <div class="bg-white p-5 rounded welcome-card text-lg-start text-sm text-center">
                       {% if request.user.is_authenticated %}
@@ -59,7 +68,7 @@
                         </div>
 
                         <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
-                            <a href="international-development-education.html" class="text-decoration-none">
+                            <a href="{% url 'main:international_development_education' %}" class="text-decoration-none">
                                 <div class="card bg-white border-0">
                                     <div class="card-body">
                                         <div class="icon">
@@ -76,7 +85,7 @@
                         </div>
 
                         <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
-                            <a href="international-exchange-program.html" class="text-decoration-none">
+                            <a href="{% url 'main:international_exchange_program' %}" class="text-decoration-none">
                                 <div class="card bg-white border-0">
                                     <div class="card-body">
                                         <div class="icon">
@@ -91,7 +100,7 @@
                         </div>
 
                         <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
-                            <a href="foreign-trips-and-visits.html" class="text-decoration-none">
+                            <a href="{% url 'main:foreign_trips' %}" class="text-decoration-none">
                                 <div class="card bg-white border-0">
                                     <div class="card-body">
                                         <div class="icon">
@@ -106,7 +115,7 @@
                         </div>
 
                         <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
-                            <a href="international-partner-universities.html" class="text-decoration-none">
+                            <a href="{% url 'main:partner_university' %}" class="text-decoration-none">
                                 <div class="card bg-white border-0">
                                     <div class="card-body">
                                         <div class="icon">
@@ -378,7 +387,7 @@
                                     <div class="card border-0">
                                         <div class="card-body">
                                             <div class="d-flex justify-content-center align-items-center">
-                                                <img src="img/partners/edu.webp" alt="" />
+                                                <img src="{% static 'img/partners/edu.webp' %}" alt="" />
                                             </div>
                                         </div>
                                     </div>
@@ -389,7 +398,7 @@
                                     <div class="card border-0">
                                         <div class="card-body">
                                             <div class="d-flex justify-content-center align-items-center">
-                                                <img src="img/partners/edu.webp" alt="" />
+                                                <img src="{% static 'img/partners/edu.webp' %}" alt="" />
                                             </div>
                                         </div>
                                     </div>
@@ -400,7 +409,7 @@
                                     <div class="card border-0">
                                         <div class="card-body">
                                             <div class="d-flex justify-content-center align-items-center">
-                                                <img src="img/partners/edu.webp" alt="" />
+                                                <img src="{% static 'img/partners/edu.webp' %}" alt="" />
                                             </div>
                                         </div>
                                     </div>
@@ -411,7 +420,7 @@
                                     <div class="card border-0">
                                         <div class="card-body">
                                             <div class="d-flex justify-content-center align-items-center">
-                                                <img src="img/partners/edu.webp" alt="" />
+                                                <img src="{% static 'img/partners/edu.webp' %}" alt="" />
                                             </div>
                                         </div>
                                     </div>
@@ -422,7 +431,7 @@
                                     <div class="card border-0">
                                         <div class="card-body">
                                             <div class="d-flex justify-content-center align-items-center">
-                                                <img src="img/partners/edu.webp" alt="" />
+                                                <img src="{% static 'img/partners/edu.webp' %}" alt="" />
                                             </div>
                                         </div>
                                     </div>
@@ -433,7 +442,7 @@
                                     <div class="card border-0">
                                         <div class="card-body">
                                             <div class="d-flex justify-content-center align-items-center">
-                                                <img src="img/partners/edu.webp" alt="" />
+                                                <img src="{% static 'img/partners/edu.webp' %}" alt="" />
                                             </div>
                                         </div>
                                     </div>
@@ -444,5 +453,15 @@
                 </section>
             </main>
         </div>
+
+        <style>
+            .alert-success {
+                background-color: #198754;
+                color: #fff;
+                border-color: #198754;
+                padding: 10px;
+                border-radius: 5px;
+            }
+        </style>
 
         {% endblock %}

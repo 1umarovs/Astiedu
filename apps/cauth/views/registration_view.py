@@ -6,6 +6,8 @@ from django.contrib import messages
 from django.shortcuts import redirect
 from django.contrib.auth import logout
 # Create your views here.
+
+
 def login_view(request):
     user = request.POST.get('email')
     password = request.POST.get('password')
@@ -18,6 +20,7 @@ def login_view(request):
             messages.error(request, 'Foydalanuvchi mavjud emas !')
             return redirect('cauth:login')
     return render(request, 'auth/login.html')
+
 
 def registration_view(request):
     fullname = request.POST.get('fullname')

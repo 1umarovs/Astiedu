@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="main flex-fill pt-5">
+    <main class="container">
+        <div class="row p-5 d-flex justify-content-center align-items-center">
+            <div class="col-md-6">
+                <div class="login-content">
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}" role="alert">
+                        {{ message }}
+
+                        <button type="button" class="btn-close p-3" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                    <form class="form needs-validation" id="register" method="post" novalidate name="login">
+                        {% csrf_token %}
+                        <div class="card border-0 form-card custom_shadow">
+                            <div class="card-body form-card-body">
+                                <h4 class="login-title">Parolni almashtirish</h4>
+
+                                <div class="form-group mb-3">
+                                    <label for="old_password" class="form-label">eski parol</label>
+                                    <input type="password" name="old_password" id="old_password" class="form-control"
+                                        placeholder="eski parolni kiriting" autocomplete="new-email" required>
+                                    <div class="error">
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label for="password" class="form-label">Parol</label>
+                                    <input type="password" name="password" id="password" class="form-control"
+                                        placeholder="Parolni kiriting" required minlength="5" value="">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="password_confirmation" class="form-label">Parol tasdig‘i</label>
+                                    <input type="password" name="password_confirmation" id="password_confirmation"
+                                        placeholder="Parol tasdig‘ini kiriting" class="form-control" value="">
+                                </div>
+
+                                <div class="d-flex justify-content-between align-items-center mt-3">
+                                    <a href="#" class="reset-password"> Parolni tiklash <i
+                                            class="fa-solid fa-lock"></i></a>
+
+                                    <button class="btn btn-success bg-">Parolni almashtirish <i
+                                            class="fa fa-arrow-right-long"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<style>
+    .alert-error {
+        background-color: #ff0015;
+        color: #fff;
+        border-color: #f5c6cb;
+        padding: 10px;
+        border-radius: 5px;
+    }
+</style>
+
+<script>
+    let full_name = `Iltimos, to&#039;liq ismingizni kiriting`;
+    let password = `Iltimos, parolni kiriting`;
+    let password_length = `Parolingiz kamida 5 belgidan iborat bo&#039;lishi kerak`;
+    let email = `Iltimos, to&#039;g&#039;ri elektron pochta manzilini kiriting`;
+    let password_confirmation = `Iltimos, parolingizni tasdiqlang`;
+    let password_confirmation_check = `Parollar mos kelmaydi`;
+    // 
+</script>
+{% endblock %}

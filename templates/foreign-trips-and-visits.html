@@ -1,97 +1,17 @@
-<!doctype html>
-<html lang="en">
-
-<!-- Mirrored from international.astiedu.uz/foreign-trips-and-visits by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 17 Sep 2025 09:45:29 GMT -->
-<!-- Added by HTTrack -->
-<meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="AKkWBkJ1gNhR0ychHD42UbwYukrzzKcXInPUaDUL">
-    <title> Xorijiy safarlar va tashriflar
-    </title>
-    <link href="core/bootstrap/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-    <link rel="stylesheet" href="core/fontawesome/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com/">
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&amp;family=Open+Sans:ital,wght@0,300..800;1,300..800&amp;family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap"
-        rel="stylesheet">
-</head>
-
-<body>
-    <div class="wrapper d-flex flex-column">
-        <div class="header">
-            <nav class="navbar navbar-expand-lg navbar-white bg-white fixed-top" aria-label="Offcanvas navbar large">
-                <div class="container">
-                    <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas"
-                        data-bs-target="#offcanvasNavbar2" aria-controls="offcanvasNavbar2"
-                        aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <a class="navbar-brand d-flex align-items-center" href="index.html">
-                        <img src="../web.astiedu.uz/img/logo/ASTI_LOGO.png" alt="ASTI Logo" width="50"
-                            class="align-text-top logo-desktop">
-                        <span class="ms-3 d-none d-md-inline"
-                            style="margin-left: 20px; font-weight: bold">ASTIEDU</span>
-                        <img src="logo/logo_single.png" alt="ASTI Mobile Logo" width="180"
-                            class="align-text-top logo-mobile d-md-none ms-3">
-                    </a>
-
-                    <div class="offcanvas offcanvas-end text-bg-white" tabindex="-1" id="offcanvasNavbar2"
-                        aria-labelledby="offcanvasNavbar2Label">
-                        <div class="offcanvas-header">
-                            <div>
-                                <a class="navbar-brand" href="#">
-                                    <img src="logo/logo_with_text_light.png" alt="" width="180"
-                                        class="d-inline-block align-text-top">
-                                </a>
-                            </div>
-                            <button type="button" class="btn-close btn-close-dark" data-bs-dismiss="offcanvas"
-                                aria-label="Close"></button>
-                        </div>
-                        <div class="offcanvas-body">
-                            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                                <li class="nav-item">
-                                    <a class="nav-link fw-500" href="contact-us.html">Bo‘g‘lanish</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="dropdown my-dropdown">
-                        <button class="btn btn-light dropdown-toggle fw-bold my-dropdown-btn" type="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="img/icons/Uz.svg" class="bd-h-lang-icon" alt=""> Uz
-                        </button>
-                        <ul class="dropdown-menu dropdown-menu-white shadow mt-2 border-0" style="min-width: 6rem;">
-                            <li>
-                                <a class="dropdown-item" href="foreign-trips-and-visits.html">
-                                    <img src="img/icons/En.svg" class="bd-h-lang-icon" alt=""> En
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="foreign-trips-and-visits.html">
-                                    <img src="img/icons/%d0%a0%d1%83.svg" class="bd-h-lang-icon" alt=""> Ру
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </div>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
         <div class="main flex-fill">
             <div class="container">
                 <nav aria-label="breadcrumb" class="mt-3 mb-3">
                     <ol class="breadcrumb p-3 bg-white rounded-3">
-                        <li class="breadcrumb-item">
-                            <a class="link-body-emphasis fw-semibold text-decoration-none" href="index.html">
+                        <li class="breadcrumb-items px-2">
+                            <a class="link-body-emphasis fw-semibold text-decoration-none" href="{% url 'main:home' %}">
                                 Asosiy
                             </a>
                         </li>
-                        <li class="breadcrumb-item active">
+                        /
+                        <li class="breadcrumb-items px-2 active">
                             Xorijiy safarlar va tashriflar
                         </li>
                     </ol>
@@ -99,24 +19,22 @@
 
                 <section class="grants mb-3" id="grants">
                     <div class="row">
+                        {% for trip in trips %}
                         <div class="col-md-12 mb-3">
                             <div
                                 class="row g-0 rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative bg-white">
                                 <div class="col-md-2 d-none d-lg-block">
-                                    <img src="storage/trip_images/3UL4UetID2Qw5uyPJTeQb0sbE0JQhjrAIUeMsmP0.html"
-                                        class="img-fluid h-100 rounded" alt="">
+                                    <img src="{{ trip.img.url }}"
+                                        class="img-fluid object-fit-cover h-100 rounded" alt="">
                                 </div>
-
+                
                                 <div class="col-md-10 p-4 d-flex flex-column position-static">
-                                    <h3 class="mb-0">Shimoliy Xitoy Texnologiya Universitetida o`tkazilgan Birinchi
-                                        O‘zbekiston-Xitoy oliygohlari fan va texnologiya innovatsion konferensiyasida
-                                        ishtrok bo`yicha</h3>
-                                    <div class="text-muted">
-                                        <i class="fas fa-clock"></i> 26.10.2024
+                                    <h3 class="mb-0">{{ trip.title }}</h3>
+                                    <div class="text-muted py-3">
+                                        <i class="fas fa-clock pe-2"></i>{{ trip.date|date:"d.m.Y" }}
                                     </div>
                                     <div class="mt-5">
-
-                                        <a href="foreign-trips-and-visit/single/2.html"
+                                        <a href="{% url 'main:foreign_trips_single' trip.id %}"
                                             class="btn btn-primary icon-link gap-1 icon-link-hover stretched-link text-center">
                                             Batafsil <i class="fas fa-arrow-right-long"></i>
                                         </a>
@@ -124,136 +42,59 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-12 mb-3">
-                            <div
-                                class="row g-0 rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative bg-white">
-                                <div class="col-md-2 d-none d-lg-block">
-                                    <img src="storage/trip_images/SAaHdO04nfIc5qF68M90NirWhWJfufNydaeVaSku.html"
-                                        class="img-fluid h-100 rounded" alt="">
-                                </div>
-
-                                <div class="col-md-10 p-4 d-flex flex-column position-static">
-                                    <h3 class="mb-0">2024-yilning 28-aprel kuni Belarus Respublikasining Minsk shahrida
-                                        Belarus-Oʻzbekiston professional taʼlim birinchi forumi oʻtkazilmoqda</h3>
-                                    <div class="text-muted">
-                                        <i class="fas fa-clock"></i> 31.10.2024
-                                    </div>
-                                    <div class="mt-5">
-
-                                        <a href="foreign-trips-and-visit/single/3.html"
-                                            class="btn btn-primary icon-link gap-1 icon-link-hover stretched-link text-center">
-                                            Batafsil <i class="fas fa-arrow-right-long"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12 mb-3">
-                            <div
-                                class="row g-0 rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative bg-white">
-                                <div class="col-md-2 d-none d-lg-block">
-                                    <img src="storage/trip_images/AsLE7MlTIbLtURZLja7V0K7WbNlVFGQAFbbiGlOV.html"
-                                        class="img-fluid h-100 rounded" alt="">
-                                </div>
-
-                                <div class="col-md-10 p-4 d-flex flex-column position-static">
-                                    <h3 class="mb-0">Xalqaro aloqalar</h3>
-                                    <div class="text-muted">
-                                        <i class="fas fa-clock"></i> 09.11.2024
-                                    </div>
-                                    <div class="mt-5">
-
-                                        <a href="foreign-trips-and-visit/single/4.html"
-                                            class="btn btn-primary icon-link gap-1 icon-link-hover stretched-link text-center">
-                                            Batafsil <i class="fas fa-arrow-right-long"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+                        {% empty %}
+                        <p class="text-center text-muted">Hozircha ma’lumot yo‘q.</p>
+                        {% endfor %}
                     </div>
-
-                    <div class="d-flex justify-content-center align-items-center">
-                        <nav aria-label="Page navigation example">
+                
+                    <!-- ✅ Professional Pagination -->
+                    {% if trips.paginator.num_pages > 1 %}
+                    <div class="d-flex justify-content-center align-items-center mt-4">
+                        <nav aria-label="Page navigation">
                             <ul class="pagination">
-                                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                
+                                <!-- Previous button -->
+                                {% if trips.has_previous %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ trips.previous_page_number }}" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                {% else %}
+                                <li class="page-item disabled">
+                                    <span class="page-link">&laquo;</span>
+                                </li>
+                                {% endif %}
+                
+                                <!-- Page numbers -->
+                                {% for num in trips.paginator.page_range %}
+                                    {% if trips.number == num %}
+                                        <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+                                    {% elif num > trips.number|add:'-3' and num < trips.number|add:'3' %}
+                                        <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                                    {% endif %}
+                                {% endfor %}
+                
+                                <!-- Next button -->
+                                {% if trips.has_next %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ trips.next_page_number }}" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                                {% else %}
+                                <li class="page-item disabled">
+                                    <span class="page-link">&raquo;</span>
+                                </li>
+                                {% endif %}
                             </ul>
                         </nav>
                     </div>
-
+                    {% endif %}
                 </section>
+                
             </div>
 
         </div>
-        <footer class="footer mt-auto">
-            <div class="bg-white d-lg-block d-none">
-                <div class="container">
-                    <div class="d-flex flex-wrap justify-content-between align-items-center py-3">
-                        <div>
-                            <a class="navbar-brand d-flex align-items-center" href="index.html">
-                                <img src="../web.astiedu.uz/img/logo/ASTI_LOGO.png" alt="ASTI Logo" width="50"
-                                    class="align-text-top logo-desktop">
-                                <span class="ms-3 d-none d-md-inline"
-                                    style="margin-left: 20px; font-weight: bold">ASTIEDU</span>
-                                <img src="logo/logo_single.png" alt="ASTI Mobile Logo" width="180"
-                                    class="align-text-top logo-mobile d-md-none ms-3">
-                            </a>
-                        </div>
-                        <div class="bg-primary-subtle p-2 rounded text-white">
-                            <i class="fa fa-phone"></i> +99893 630-00-44
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="container d-lg-block d-none">
-                <div class="d-flex justify-content-between mt-2">
-                    <p class="text-body-secondary">© Barcha huquqlar himoyalangan 2025</p>
 
-                    <p class="text-body-secondary">Materiallardan foydalanganda saytNomiga havola bo‘lishi shart!
-                        international.astiedu.uz </p>
-                </div>
-            </div>
-            <section class="bg-white footer-menu mt-3 fixed-bottom d-lg-none d-block" id="footer-menu">
-                <div class="container">
-                    <div class="card border-0">
-                        <div class="card-body">
-                            <div class="row d-flex align-items-center justify-content-between">
-                                <div class="col-4">
-                                    <a href="#" class="btn footer-icon d-flex align-items-center active">
-                                        <i class="fa fa-home"></i> <span class="active ms-2">Asosiy</span>
-                                    </a>
-                                </div>
-
-                                <div class="col-4">
-                                    <a href="#" class="btn footer-icon d-flex align-items-center">
-                                        <i class="fa fa-user-plus"></i> <span class="active ms-2">Qabul</span>
-                                    </a>
-                                </div>
-
-                                <div class="col-4">
-                                    <a href="#" class="btn footer-icon d-flex align-items-center">
-                                        <i class="fa fa-user"></i> <span class="active ms-2">Shaxsiy</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </footer>
-    </div>
-
-    <script src="core/bootstrap/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="core/jQuery/jquery.min.js" crossorigin="anonymous"></script>
-    <script src="js/app.js"></script>
-
-</body>
-
-<!-- Mirrored from international.astiedu.uz/foreign-trips-and-visits by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 17 Sep 2025 09:45:31 GMT -->
-
-</html>
+{% endblock %}
