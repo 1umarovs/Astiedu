@@ -3,6 +3,7 @@ from apps.core.models import AdvancedTraining
 
 def advanced_training(request):
     advanced_training = AdvancedTraining.objects.last()
+    
     context = {
         'advanced_training': advanced_training
     }

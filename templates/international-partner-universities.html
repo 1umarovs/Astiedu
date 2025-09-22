@@ -59,7 +59,7 @@
                                                             <td>{{ partner_university.country }}</td>
                                                             <td><a href="{{ partner_university.official_website }}"
                                                                     target="_blank">{{ partner_university.official_website }}</a></td>
-                                                            <td><img src="{{ partner_university.university_logo.url }}"
+                                                            <td class="d-flex justify-content-center"><img src="{{ partner_university.university_logo.url }}"
                                                                     alt="" class="university-logo rounded" width="100">
                                                             </td>
                                                         </tr>
@@ -111,5 +111,14 @@
 
         </div>
 
+
+
+<style>
+    .td{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
 
 {% endblock %}

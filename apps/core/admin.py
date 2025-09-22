@@ -14,3 +14,4 @@ class InternationalExchangeProgramAdmin(admin.ModelAdmin):
 admin.site.register(AdvancedTraining)
 admin.site.register(Trips)
 admin.site.register(Partner_university)
+admin.site.register(HonoraryProfessors)

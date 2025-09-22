@@ -53,3 +53,20 @@ class Partner_university(models.Model):
     class Meta:
         verbose_name = 'Partner University'
         verbose_name_plural = 'Partner Universities'
+
+
+
+class HonoraryProfessors(models.Model):
+    name = models.CharField(max_length=255)
+    country = models.CharField(max_length=255)
+    description = RichTextField()
+    img = models.ImageField(upload_to='honorary_professors/')
+
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Honorary Professor'
+        verbose_name_plural = 'Honorary Professors'
+    
