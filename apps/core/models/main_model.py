@@ -69,4 +69,45 @@ class HonoraryProfessors(models.Model):
     class Meta:
         verbose_name = 'Honorary Professor'
         verbose_name_plural = 'Honorary Professors'
+
+
+class InternationalStudents(models.Model):
+    name = models.CharField(max_length=255)
+    country = models.CharField(max_length=255)
+    course = models.CharField(max_length=255)
+    direction = models.CharField(max_length=255)
+    img = models.ImageField(upload_to='international_students/')
+
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'International Student'
+        verbose_name_plural = 'International Students'
+
+
+
+class InternationalStudentsImages(models.Model):
+    international_students = models.ForeignKey(InternationalStudents, on_delete=models.CASCADE, related_name='images')
+    img = models.ImageField(upload_to='international_students_images/')
+
+    def __str__(self):
+        return self.international_students.name
+
+    class Meta:
+        verbose_name = 'International Student Image'
+        verbose_name_plural = 'International Student Images'
+    
+class Ranking(models.Model):
+    title = models.CharField(max_length=255)
+    img = models.ImageField(upload_to='ranking/')
+    description = RichTextField()
+
+    class Meta:
+        verbose_name = 'Ranking'
+        verbose_name_plural = 'Rankings'    
+    
+    def __str__(self):
+        return self.title
     

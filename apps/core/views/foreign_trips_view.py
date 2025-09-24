@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from apps.core.models import Trips
+from apps.core.models import Trips , Ranking
 from django.core.paginator import Paginator
 
 def foreign_trips(request):
@@ -16,3 +16,20 @@ def single_trips(request,id):
     trip = Trips.objects.get(id=id)
     others = Trips.objects.exclude(id=id).defer('description', 'description_uz', 'description_en', 'description_ru').all()
     return render(request, 'foreign-trips-and-visit/single/single.html', {'trip': trip, 'others': others})
+
+
+def rankings(request):
+    rankings = Ranking.objects.all()
+    print(rankings)
+    paginator = Paginator(rankings, 3)
+    page = request.GET.get('page')
+    rankings = paginator.get_page(page)
+    context = {
+        'rankings': rankings
+    }
+    return render(request, 'international-ranking.html', context)
+
+def single_ranking(request,id):
+    ranking = Ranking.objects.get(id=id)
+    others = Ranking.objects.exclude(id=id).defer('description', 'description_uz', 'description_en', 'description_ru').all()
+    return render(request, 'ranking/single.html', {'ranking': ranking, 'others': others})

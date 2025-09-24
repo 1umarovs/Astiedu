@@ -8,3 +8,4 @@ def advanced_training(request):
         'advanced_training': advanced_training
     }
     return render(request, 'international-development-education.html', context)
+

@@ -12,5 +12,8 @@ urlpatterns = [
     path('foreign-trips-and-visits/single/<int:id>/', views.single_trips, name='foreign_trips_single'),
     path('international-partner-universities/', views.partner_university, name='partner_university'),
     path('international-honorary-professors/', views.honorary_professors, name='honorary_professors'),
+    path('international-students/', views.international_students, name='international_students'),
+    path('international-ranking/', views.rankings, name='international_ranking'),
     path('cabinet/', views.profile, name='profile'),
+    path('ranking/single/<int:id>/', views.single_ranking, name='ranking_single'),
 ]

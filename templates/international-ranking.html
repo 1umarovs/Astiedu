@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+        <div class="main flex-fill">
+            <div class="container">
+                <nav aria-label="breadcrumb" class="mt-3 mb-3">
+                    <ol class="breadcrumb p-3 bg-white rounded-3">
+                        <li class="breadcrumb-items px-2">
+                            <a class="link-body-emphasis fw-semibold text-decoration-none" href="{% url 'main:home' %}">
+                                Asosiy
+                            </a>
+                        </li>
+                        /
+                        <li class="breadcrumb-items px-2 active">
+                            Xalqaro reyting
+                        </li>
+                    </ol>
+                </nav>
+
+                <section class="grants mb-3" id="grants">
+                    <div class="row">
+                        {% for ranking in rankings %}
+                        <div class="col-md-12 mb-3">
+                            <div
+                                class="row g-0 rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative bg-white">
+                                <div class="col-md-2 d-none d-lg-block">
+                                    <img src="{{ ranking.img.url }}"
+                                        class="img-fluid object-fit-cover h-100 rounded" alt="">
+                                </div>
+                
+                                <div class="col-md-10 p-4 d-flex flex-column position-static">
+                                    <h3 class="mb-0">{{ ranking.title }}</h3>
+                                    <div class="text-muted py-3">
+                                        {{ ranking.description|safe|truncatewords:40 }}
+                                    </div>
+                                    <div class="">
+                                        <a href="{% url 'main:ranking_single' ranking.id %}"
+                                            class="btn btn-primary icon-link gap-1 icon-link-hover stretched-link text-center">
+                                            Batafsil <i class="fas fa-arrow-right-long"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% empty %}
+                        <p class="text-center text-muted">Hozircha ma’lumot yo‘q.</p>
+                        {% endfor %}
+                    </div>
+                
+                    <!-- ✅ Professional Pagination -->
+                    {% if rankings.paginator.num_pages > 1 %}
+                    <div class="d-flex justify-content-center align-items-center mt-4">
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination">
+                
+                                <!-- Previous button -->
+                                {% if rankings.has_previous %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ rankings.previous_page_number }}" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                {% else %}
+                                <li class="page-item disabled">
+                                    <span class="page-link">&laquo;</span>
+                                </li>
+                                {% endif %}
+                
+                                <!-- Page numbers -->
+                                {% for num in rankings.paginator.page_range %}
+                                    {% if rankings.number == num %}
+                                        <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+                                    {% elif num > rankings.number|add:'-3' and num < rankings.number|add:'3' %}
+                                        <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                                    {% endif %}
+                                {% endfor %}
+                
+                                <!-- Next button -->
+                                {% if rankings.has_next %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ rankings.next_page_number }}" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                                {% else %}
+                                <li class="page-item disabled">
+                                    <span class="page-link">&raquo;</span>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </nav>
+                    </div>
+                    {% endif %}
+                </section>
+                
+            </div>
+
+        </div>
+
+{% endblock %}
