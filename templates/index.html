@@ -1,396 +1,395 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-        <div class="main flex-fill">
-            <main class="container">
-                {% if messages %}
-                {% for message in messages %}
-                <div class="alert alert-{{ message.tags }} d-flex justify-content-between align-items-center" role="alert">
-                    {{ message }}
+<div class="main flex-fill">
+    <main class="container">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} d-flex justify-content-between align-items-center" role="alert">
+            {{ message }}
 
-                    <button type="button" class="btn-close p-3" data-bs-dismiss="alert" aria-label="Close"></button>
+            <button type="button" class="btn-close p-3" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        <section class="user" id="user">
+            <div class="bg-white p-5 rounded welcome-card text-lg-start text-sm text-center">
+                {% if request.user.is_authenticated %}
+                <h4 class="text-lg-start text-center text-uppercase">{{request.user.fullname}}</h4>
+                <p class="fw-bold">Shaxsiy kabinetga xush kelibsiz!</p>
+                {% else %}
+                <h4 class="text-lg-start text-center text-uppercase">
+                    WELCOME TO Andijan State Technical Institute INTERNATIONAL
+                    COOPERATION DEPARTMENT WEB PAGE!
+                </h4>
+                <div class="mt-3 d-flex justify-content-lg-start justify-content-md-center justify-content-center">
+                    <a href="{% url 'cauth:login' %}" class="btn btn-lg btn-primary">Login</a>
+                    <a href="{% url 'cauth:register' %}" class="btn btn-lg btn-outline-primary ms-2">Registration</a>
                 </div>
-                {% endfor %}
                 {% endif %}
-                <section class="user" id="user">
-                    <div class="bg-white p-5 rounded welcome-card text-lg-start text-sm text-center">
-                      {% if request.user.is_authenticated %}
-                        <h4 class="text-lg-start text-center text-uppercase">{{request.user.fullname}}</h4>
-                        <p class="fw-bold">Shaxsiy kabinetga xush kelibsiz!</p>
-                      {% else %}
-                        <h4 class="text-lg-start text-center text-uppercase">
-                            WELCOME TO Andijan State Technical Institute INTERNATIONAL
-                            COOPERATION DEPARTMENT WEB PAGE!
+            </div>
+        </section>
+        <section class="notification" id="notification">
+            <div class="card mt-3 border-0 bg-primary-subtle text-success-emphasis">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h4 class="text-white">
+                            <i class="fa-solid fa-bullhorn"></i> Admission to higher and
+                            professional educational institutions (for the 2024-2025
+                            academic year)
                         </h4>
-                        <div
-                            class="mt-3 d-flex justify-content-lg-start justify-content-md-center justify-content-center">
-                            <a href="{% url 'cauth:login' %}" class="btn btn-lg btn-primary">Login</a>
-                            <a href="{% url 'cauth:register' %}" class="btn btn-lg btn-outline-primary ms-2">Registration</a>
-                        </div>
-                      {% endif %}
+                        <a href="#" class="btn btn-lg btn-primary d-lg-block d-none">Use the service <i
+                                class="fa-solid fa-arrow-right-long"></i></a>
                     </div>
-                </section>
-                <section class="notification" id="notification">
-                    <div class="card mt-3 border-0 bg-primary-subtle text-success-emphasis">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <h4 class="text-white">
-                                    <i class="fa-solid fa-bullhorn"></i> Admission to higher and
-                                    professional educational institutions (for the 2024-2025
-                                    academic year)
-                                </h4>
-                                <a href="#" class="btn btn-lg btn-primary d-lg-block d-none">Use the service <i
-                                        class="fa-solid fa-arrow-right-long"></i></a>
+                </div>
+                <div class="card-footer d-lg-none d-block d-flex justify-content-center">
+                    <a href="#" class="text-center text-decoration-none text-success">Use the service <i
+                            class="fa-solid fa-arrow-right-long"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <section class="actives mt-3" id="actives">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
+                    <a href="grants.html" class="text-decoration-none">
+                        <div class="card bg-white border-0">
+                            <div class="card-body">
+                                <div class="icon">
+                                    <i class="fa-solid fa-user-graduate"></i>
+                                </div>
+                                <div class="mt-4">
+                                    <h5 class="fz-18">Grants</h5>
+                                </div>
                             </div>
                         </div>
-                        <div class="card-footer d-lg-none d-block d-flex justify-content-center">
-                            <a href="#" class="text-center text-decoration-none text-success">Use the service <i
-                                    class="fa-solid fa-arrow-right-long"></i></a>
-                        </div>
-                    </div>
-                </section>
+                    </a>
+                </div>
 
-                <section class="actives mt-3" id="actives">
-                    <div class="row">
-                        <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
-                            <a href="grants.html" class="text-decoration-none">
-                                <div class="card bg-white border-0">
-                                    <div class="card-body">
-                                        <div class="icon">
-                                            <i class="fa-solid fa-user-graduate"></i>
-                                        </div>
-                                        <div class="mt-4">
-                                            <h5 class="fz-18">Grants</h5>
-                                        </div>
-                                    </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
+                    <a href="{% url 'main:international_development_education' %}" class="text-decoration-none">
+                        <div class="card bg-white border-0">
+                            <div class="card-body">
+                                <div class="icon">
+                                    <i class="fa fa-university"></i>
                                 </div>
-                            </a>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
-                            <a href="{% url 'main:international_development_education' %}" class="text-decoration-none">
-                                <div class="card bg-white border-0">
-                                    <div class="card-body">
-                                        <div class="icon">
-                                            <i class="fa fa-university"></i>
-                                        </div>
-                                        <div class="mt-4">
-                                            <h5 class="fz-18">
-                                                Advanced training and education abroad
-                                            </h5>
-                                        </div>
-                                    </div>
+                                <div class="mt-4">
+                                    <h5 class="fz-18">
+                                        Advanced training and education abroad
+                                    </h5>
                                 </div>
-                            </a>
+                            </div>
                         </div>
+                    </a>
+                </div>
 
-                        <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
-                            <a href="{% url 'main:international_exchange_program' %}" class="text-decoration-none">
-                                <div class="card bg-white border-0">
-                                    <div class="card-body">
-                                        <div class="icon">
-                                            <i class="fa-solid fa-list-ul"></i>
-                                        </div>
-                                        <div class="mt-4">
-                                            <h5 class="fz-18">International exchange program</h5>
-                                        </div>
-                                    </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
+                    <a href="{% url 'main:international_exchange_program' %}" class="text-decoration-none">
+                        <div class="card bg-white border-0">
+                            <div class="card-body">
+                                <div class="icon">
+                                    <i class="fa-solid fa-list-ul"></i>
                                 </div>
-                            </a>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
-                            <a href="{% url 'main:foreign_trips' %}" class="text-decoration-none">
-                                <div class="card bg-white border-0">
-                                    <div class="card-body">
-                                        <div class="icon">
-                                            <i class="fa-solid fa-plane-departure"></i>
-                                        </div>
-                                        <div class="mt-4">
-                                            <h5 class="fz-18">Foreign trips and visits</h5>
-                                        </div>
-                                    </div>
+                                <div class="mt-4">
+                                    <h5 class="fz-18">International exchange program</h5>
                                 </div>
-                            </a>
+                            </div>
                         </div>
+                    </a>
+                </div>
 
-                        <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
-                            <a href="{% url 'main:partner_university' %}" class="text-decoration-none">
-                                <div class="card bg-white border-0">
-                                    <div class="card-body">
-                                        <div class="icon">
-                                            <i class="fa-solid fa-landmark"></i>
-                                        </div>
-                                        <div class="mt-4">
-                                            <h5 class="fz-18">
-                                                International partner Universities
-                                            </h5>
-                                        </div>
-                                    </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
+                    <a href="{% url 'main:foreign_trips' %}" class="text-decoration-none">
+                        <div class="card bg-white border-0">
+                            <div class="card-body">
+                                <div class="icon">
+                                    <i class="fa-solid fa-plane-departure"></i>
                                 </div>
-                            </a>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
-                            <a href="{% url 'main:honorary_professors' %}" class="text-decoration-none">
-                                <div class="card bg-white border-0">
-                                    <div class="card-body">
-                                        <div class="icon">
-                                            <i class="fa-solid fa-graduation-cap"></i>
-                                        </div>
-                                        <div class="mt-4">
-                                            <h5 class="fz-18">International Honorary Professors</h5>
-                                        </div>
-                                    </div>
+                                <div class="mt-4">
+                                    <h5 class="fz-18">Foreign trips and visits</h5>
                                 </div>
-                            </a>
+                            </div>
                         </div>
+                    </a>
+                </div>
 
-                        <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
-                            <a href="{% url 'main:international_students' %}" class="text-decoration-none">
-                                <div class="card bg-white border-0">
-                                    <div class="card-body">
-                                        <div class="icon">
-                                            <i class="fa-solid fa-users"></i>
-                                        </div>
-                                        <div class="mt-4">
-                                            <h5 class="fz-18">International students</h5>
-                                        </div>
-                                    </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
+                    <a href="{% url 'main:partner_university' %}" class="text-decoration-none">
+                        <div class="card bg-white border-0">
+                            <div class="card-body">
+                                <div class="icon">
+                                    <i class="fa-solid fa-landmark"></i>
                                 </div>
-                            </a>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
-                            <a href="{% url 'main:international_ranking' %}" class="text-decoration-none">
-                                <div class="card bg-white border-0">
-                                    <div class="card-body">
-                                        <div class="icon">
-                                            <i class="fa-solid fa-chart-simple"></i>
-                                        </div>
-                                        <div class="mt-4">
-                                            <h5 class="fz-18">International ranking</h5>
-                                        </div>
-                                    </div>
+                                <div class="mt-4">
+                                    <h5 class="fz-18">
+                                        International partner Universities
+                                    </h5>
                                 </div>
-                            </a>
+                            </div>
                         </div>
-                    </div>
-                </section>
+                    </a>
+                </div>
 
-                <section class="services mt-3" id="services">
-                    <div class="title mb-3">
-                        <h4 class="text-center">Admission</h4>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4 mb-3">
-                            <a href="{% url 'main:profile' %}" class="text-decoration-none">
-                                <div class="card card-service border-0">
-                                    <div class="card-body d-flex align-items-center">
-                                        <div class="icon">
-                                            <i class="fa fa-user-plus"></i>
-                                        </div>
-                                        <span class="ms-3">Submission of documents</span>
-                                    </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
+                    <a href="{% url 'main:honorary_professors' %}" class="text-decoration-none">
+                        <div class="card bg-white border-0">
+                            <div class="card-body">
+                                <div class="icon">
+                                    <i class="fa-solid fa-graduation-cap"></i>
                                 </div>
-                            </a>
-                        </div>
-
-                        <div class="col-md-4 mb-3">
-                            <a href="admission/specialities.html" class="text-decoration-none">
-                                <div class="card card-service border-0">
-                                    <div class="card-body d-flex align-items-center">
-                                        <div class="icon">
-                                            <i class="fa-solid fa-list"></i>
-                                        </div>
-                                        <span class="ms-3">Educational areas</span>
-                                    </div>
+                                <div class="mt-4">
+                                    <h5 class="fz-18">International Honorary Professors</h5>
                                 </div>
-                            </a>
+                            </div>
                         </div>
+                    </a>
+                </div>
 
-                        <div class="col-md-4 mb-3">
-                            <a href="admission/uzbekistan.html" class="text-decoration-none">
-                                <div class="card card-service border-0">
-                                    <div class="card-body d-flex align-items-center">
-                                        <div class="icon">
-                                            <i class="fa-solid fa-earth-americas"></i>
-                                        </div>
-                                        <span class="ms-3">About Uzbekistan</span>
-                                    </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
+                    <a href="{% url 'main:international_students' %}" class="text-decoration-none">
+                        <div class="card bg-white border-0">
+                            <div class="card-body">
+                                <div class="icon">
+                                    <i class="fa-solid fa-users"></i>
                                 </div>
-                            </a>
-                        </div>
-
-                        <div class="col-md-4 mb-3">
-                            <a href="admission/hostel-for-foreign-students.html" class="text-decoration-none">
-                                <div class="card card-service border-0">
-                                    <div class="card-body d-flex align-items-center">
-                                        <div class="icon">
-                                            <i class="fa-solid fa-hotel"></i>
-                                        </div>
-                                        <span class="ms-3">Hostel for foreign students</span>
-                                    </div>
+                                <div class="mt-4">
+                                    <h5 class="fz-18">International students</h5>
                                 </div>
-                            </a>
+                            </div>
                         </div>
+                    </a>
+                </div>
 
-                        <div class="col-md-4 mb-3">
-                            <a href="javascript:void(0)" class="text-decoration-none">
-                                <div class="card card-service border-0">
-                                    <div class="card-body d-flex align-items-center">
-                                        <div class="icon">
-                                            <i class="fa-solid fa-wallet"></i>
-                                        </div>
-                                        <span class="ms-3">Daily expenses</span>
-                                    </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
+                    <a href="{% url 'main:international_ranking' %}" class="text-decoration-none">
+                        <div class="card bg-white border-0">
+                            <div class="card-body">
+                                <div class="icon">
+                                    <i class="fa-solid fa-chart-simple"></i>
                                 </div>
-                            </a>
-                        </div>
-
-                        <div class="col-md-4 mb-3">
-                            <a href="admission/brochures.html" class="text-decoration-none">
-                                <div class="card card-service border-0">
-                                    <div class="card-body d-flex align-items-center">
-                                        <div class="icon">
-                                            <i class="fa-solid fa-newspaper"></i>
-                                        </div>
-                                        <span class="ms-3">Brochures</span>
-                                    </div>
+                                <div class="mt-4">
+                                    <h5 class="fz-18">International ranking</h5>
                                 </div>
-                            </a>
+                            </div>
                         </div>
-                    </div>
-                </section>
+                    </a>
+                </div>
+            </div>
+        </section>
 
-                <section class="news mt-3" id="news">
-                    <div class="title mb-3 d-flex justify-content-between align-items-center">
-                        <h4 class="fz-24">So‘ngi yangiliklar</h4>
-                        <a href="#" class="d-lg-block d-none btn btn-lg btn-primary text-decoration-none">More <i
-                                class="fa fa-arrow-right-long"></i></a>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4 mb-3">
-                            <a href="index.html" class="text-decoration-none">
-                                <div class="card border-0 custom_shadow news-card h-100">
-                                    <div class="news_img">
-                                        <img src="storage/news-en-images/8zJKRbwSIrWOpXg0fiKEOJW3vHInPdBi8SGt3WJY.jpg"
-                                            style="
+        <section class="services mt-3" id="services">
+            <div class="title mb-3">
+                <h4 class="text-center">Admission</h4>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <a href="{% url 'main:profile' %}" class="text-decoration-none">
+                        <div class="card card-service border-0">
+                            <div class="card-body d-flex align-items-center">
+                                <div class="icon">
+                                    <i class="fa fa-user-plus"></i>
+                                </div>
+                                <span class="ms-3">Submission of documents</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <a href="{% url 'main:specialities' %}" class="text-decoration-none">
+                        <div class="card card-service border-0">
+                            <div class="card-body d-flex align-items-center">
+                                <div class="icon">
+                                    <i class="fa-solid fa-list"></i>
+                                </div>
+                                <span class="ms-3">Educational areas</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <a href="{% url 'main:about_uzbekistan' %}" class="text-decoration-none">
+                        <div class="card card-service border-0">
+                            <div class="card-body d-flex align-items-center">
+                                <div class="icon">
+                                    <i class="fa-solid fa-earth-americas"></i>
+                                </div>
+                                <span class="ms-3">About Uzbekistan</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <a href="{% url 'main:hostel_for_foreign_students' %}" class="text-decoration-none">
+                        <div class="card card-service border-0">
+                            <div class="card-body d-flex align-items-center">
+                                <div class="icon">
+                                    <i class="fa-solid fa-hotel"></i>
+                                </div>
+                                <span class="ms-3">Hostel for foreign students</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <a href="javascript:void(0)" class="text-decoration-none">
+                        <div class="card card-service border-0">
+                            <div class="card-body d-flex align-items-center">
+                                <div class="icon">
+                                    <i class="fa-solid fa-wallet"></i>
+                                </div>
+                                <span class="ms-3">Daily expenses</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <a href="{% url 'main:brochures' %}" class="text-decoration-none">
+                        <div class="card card-service border-0">
+                            <div class="card-body d-flex align-items-center">
+                                <div class="icon">
+                                    <i class="fa-solid fa-newspaper"></i>
+                                </div>
+                                <span class="ms-3">Brochures</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="news mt-3" id="news">
+            <div class="title mb-3 d-flex justify-content-between align-items-center">
+                <h4 class="fz-24">So‘ngi yangiliklar</h4>
+                <a href="{% url 'main:all_news' %}" class="d-lg-block d-none btn btn-lg btn-primary text-decoration-none">More <i
+                        class="fa fa-arrow-right-long"></i></a>
+            </div>
+            <div class="row">
+                {% for new in news %}
+                <div class="col-md-4 mb-3">
+                    <a href="{% url 'main:news_single' new.id %}" class="text-decoration-none">
+                        <div class="card border-0 custom_shadow news-card h-100">
+                            <div class="news_img">
+                                <img src="{{new.img.url}}" style="
                           min-height: 293px;
                           max-height: 293px;
                           min-width: 416px;
                           max-width: 416px;
                         " class="card-img-top" alt="..." />
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="d-flex align-items-center">
-                                            <span class="text-muted fw-bold">10.07.2025</span>
-                                            <span class="p-1 e8edf1 rounded ms-2 hashtag">
-                                                News
-                                            </span>
-                                        </div>
-                                        <h4>
-                                            A graduation ceremony for graduates of the Andijan State
-                                            Technical Institute was held in the city of Babur.
-                                        </h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <span class="text-muted fw-bold">{{new.date}}</span>
+                                    <span class="p-1 e8edf1 rounded ms-2 hashtag">
+                                        News
+                                    </span>
+                                </div>
+                                <h4>
+                                    {{new.title}}
+                                </h4>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+
+
+
+        <section class="partners mb-5" id="partners">
+            <div class="title mb-3">
+                <h4>Partner organizations</h4>
+            </div>
+            <!-- Slider main container -->
+            <div class="swiper">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <div class="swiper-slide">
+                        <a href="#">
+                            <div class="card border-0">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-center align-items-center">
+                                        <img src="{% static 'img/partners/edu.webp' %}" alt="" />
                                     </div>
                                 </div>
-                            </a>
-                        </div>
+                            </div>
+                        </a>
                     </div>
-                </section>
-
-
-
-                <section class="partners mb-5" id="partners">
-                    <div class="title mb-3">
-                        <h4>Partner organizations</h4>
+                    <div class="swiper-slide">
+                        <a href="#">
+                            <div class="card border-0">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-center align-items-center">
+                                        <img src="{% static 'img/partners/edu.webp' %}" alt="" />
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                    <!-- Slider main container -->
-                    <div class="swiper">
-                        <!-- Additional required wrapper -->
-                        <div class="swiper-wrapper">
-                            <!-- Slides -->
-                            <div class="swiper-slide">
-                                <a href="#">
-                                    <div class="card border-0">
-                                        <div class="card-body">
-                                            <div class="d-flex justify-content-center align-items-center">
-                                                <img src="{% static 'img/partners/edu.webp' %}" alt="" />
-                                            </div>
-                                        </div>
+                    <div class="swiper-slide">
+                        <a href="#">
+                            <div class="card border-0">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-center align-items-center">
+                                        <img src="{% static 'img/partners/edu.webp' %}" alt="" />
                                     </div>
-                                </a>
+                                </div>
                             </div>
-                            <div class="swiper-slide">
-                                <a href="#">
-                                    <div class="card border-0">
-                                        <div class="card-body">
-                                            <div class="d-flex justify-content-center align-items-center">
-                                                <img src="{% static 'img/partners/edu.webp' %}" alt="" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="#">
-                                    <div class="card border-0">
-                                        <div class="card-body">
-                                            <div class="d-flex justify-content-center align-items-center">
-                                                <img src="{% static 'img/partners/edu.webp' %}" alt="" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="#">
-                                    <div class="card border-0">
-                                        <div class="card-body">
-                                            <div class="d-flex justify-content-center align-items-center">
-                                                <img src="{% static 'img/partners/edu.webp' %}" alt="" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="#">
-                                    <div class="card border-0">
-                                        <div class="card-body">
-                                            <div class="d-flex justify-content-center align-items-center">
-                                                <img src="{% static 'img/partners/edu.webp' %}" alt="" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="#">
-                                    <div class="card border-0">
-                                        <div class="card-body">
-                                            <div class="d-flex justify-content-center align-items-center">
-                                                <img src="{% static 'img/partners/edu.webp' %}" alt="" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
+                        </a>
                     </div>
-                </section>
-            </main>
-        </div>
+                    <div class="swiper-slide">
+                        <a href="#">
+                            <div class="card border-0">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-center align-items-center">
+                                        <img src="{% static 'img/partners/edu.webp' %}" alt="" />
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#">
+                            <div class="card border-0">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-center align-items-center">
+                                        <img src="{% static 'img/partners/edu.webp' %}" alt="" />
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#">
+                            <div class="card border-0">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-center align-items-center">
+                                        <img src="{% static 'img/partners/edu.webp' %}" alt="" />
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
 
-        <style>
-            .alert-success {
-                background-color: #198754;
-                color: #fff;
-                border-color: #198754;
-                padding: 10px;
-                border-radius: 5px;
-            }
-        </style>
+<style>
+    .alert-success {
+        background-color: #198754;
+        color: #fff;
+        border-color: #198754;
+        padding: 10px;
+        border-radius: 5px;
+    }
+</style>
 
-        {% endblock %}
+{% endblock %}

@@ -70,7 +70,7 @@
                                     <h4 class="fz-16 border-bottom pb-2 fw-bold">Xalqaro faoliyat</h4>
                                     <ul class="rightMenu">
                                         <li>
-                                            <a href="{% url 'main:grants' %}">Grantlar</a>
+                                            <a href="{% comment %} {% url 'main:grants' %} {% endcomment %}">Grantlar</a>
                                         </li>
                                         <li>
                                             <a href="{% url 'main:international_development_education' %}">Xorijda malaka oshirish
@@ -83,10 +83,10 @@
                                             <a href="{% url 'main:foreign_trips' %}">Xorijiy safarlar va tashriflar</a>
                                         </li>
                                         <li>
-                                            <a href="{% url 'main:international_partner_universities' %}">Xalqaro hamkor Unversitetlar</a>
+                                            <a href="{% url 'main:partner_university' %}">Xalqaro hamkor Unversitetlar</a>
                                         </li>
                                         <li>
-                                            <a href="{% url 'main:international_honorary_professors' %}">Xalqaro faxriy professorlar</a>
+                                            <a href="{% url 'main:honorary_professors' %}">Xalqaro faxriy professorlar</a>
                                         </li>
                                         <li>
                                             <a href="{% url 'main:international_students' %}">Xorijiy talabalar</a>
@@ -102,10 +102,10 @@
 
         </div>
 
-<style>
+<!-- <style>
     td{
         text-align: center;
     }
-</style>
+</style> -->
 
 {% endblock %}

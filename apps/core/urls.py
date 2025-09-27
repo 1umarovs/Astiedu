@@ -16,4 +16,11 @@ urlpatterns = [
     path('international-ranking/', views.rankings, name='international_ranking'),
     path('cabinet/', views.profile, name='profile'),
     path('ranking/single/<int:id>/', views.single_ranking, name='ranking_single'),
+    path('about-uzbekistan/', views.about_uzbekistan, name='about_uzbekistan'),
+    path('admission/specialities/', views.specialities, name='specialities'),
+    path('admission/brochures/', views.brochures, name='brochures'),
+    path('all-news/', views.all_news, name='all_news'),
+    path('all-news/single/<int:id>/', views.single_news, name='news_single'),
+    path('admission/hostel-for-foreign-students/', views.hostel_for_foreign_students, name='hostel_for_foreign_students'),
+    path('admission/hostel-for-foreign-students/single/<int:id>/', views.single_hostel, name='hostel_for_foreign_students_single'),
 ]

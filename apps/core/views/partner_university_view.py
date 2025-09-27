@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from apps.core.models import Partner_university, InternationalExchangeProgram
+from apps.core.models import Partner_university, InternationalExchangeProgram , EducationalAreas , Brochures
 
 
 
@@ -19,3 +19,19 @@ def international_exchange_program(request):
         'IEP': international_exchange_program
     }
     return render(request, 'international-exchange-program.html', context)
+
+
+def specialities(request):
+    specialities = EducationalAreas.objects.all()
+    context = {
+        'EA': specialities
+    }
+    return render(request, 'admission/specialities.html', context)
+
+
+def brochures(request):
+    brochures = Brochures.objects.all()
+    context = {
+        'Brochures': brochures
+    }
+    return render(request, 'admission/brochures.html', context)

@@ -110,4 +110,84 @@ class Ranking(models.Model):
     
     def __str__(self):
         return self.title
+
+class AboutUzbekistan(models.Model):
+    title = models.CharField(max_length=255)
+    link = models.URLField()
+    img = models.ImageField(upload_to='about_uzbekistan/')
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'About Uzbekistan'
+        verbose_name_plural = 'About Uzbekistan'
     
+
+
+class EducationalAreas(models.Model):
+    cipher = models.SlugField(max_length=255 , unique=True)
+    title = models.CharField(max_length=255)
+    e_type = models.CharField(max_length=255)
+    e_form = models.CharField(max_length=255)
+    e_language = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'Educational Area'
+        verbose_name_plural = 'Educational Areas'
+
+
+class Brochures(models.Model):
+    title = models.CharField(max_length=255)
+    language = models.CharField(max_length=255)
+    file = models.FileField(upload_to='brochures/')
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'Brochure'
+        verbose_name_plural = 'Brochures'
+
+class News(models.Model):
+    title = models.CharField(max_length=255)
+    description = RichTextField()
+    img = models.ImageField(upload_to='news/')
+    date = models.DateField()
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'News'
+        verbose_name_plural = 'News'
+        ordering = ['-date']
+
+
+class Hostel(models.Model):
+    title = models.CharField(max_length=255)
+    description = RichTextField()
+    img = models.ImageField(upload_to='hostel/')
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'Hostel'
+        verbose_name_plural = 'Hostels'
+
+class HostelImages(models.Model):
+    hostel = models.ForeignKey(Hostel, on_delete=models.CASCADE, related_name='images')
+    img = models.ImageField(upload_to='hostel_images/')
+
+    def __str__(self):
+        return self.hostel.title
+
+    class Meta:
+        verbose_name = 'Hostel Image'
+        verbose_name_plural = 'Hostel Images'
+
+

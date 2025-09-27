@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+        <div class="main flex-fill">
+            <div class="container">
+                <nav aria-label="breadcrumb" class="mt-3 mb-3">
+                    <ol class="breadcrumb p-3 bg-white rounded-3">
+                        <li class="breadcrumb-items px-2">
+                            <a class="link-body-emphasis fw-semibold text-decoration-none" href="{% url 'main:home' %}">
+                                Asosiy
+                            </a>
+                        </li>
+                        /
+                        <li class="breadcrumb-items px-2 active">
+                            Xorijiy safarlar va tashriflar
+                        </li>
+                    </ol>
+                </nav>
+
+                <section class="grants mb-3" id="grants">
+                    <div class="row">
+                        {% for new in news %}
+                        <div class="col-md-4 mb-3">
+                            <a href="{% url 'main:news_single' new.id %}" class="text-decoration-none">
+                                <div class="card border-0 custom_shadow news-card h-100">
+                                    <div class="news_img">
+                                        <img src="{{new.img.url}}" style="
+                                  min-height: 293px;
+                                  max-height: 293px;
+                                  min-width: 416px;
+                                  max-width: 416px;
+                                " class="card-img-top" alt="..." />
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center">
+                                            <span class="text-muted fw-bold">{{new.date}}</span>
+                                            <span class="p-1 e8edf1 rounded ms-2 hashtag">
+                                                News
+                                            </span>
+                                        </div>
+                                        <h4>
+                                            {{new.title}}
+                                        </h4>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        {% empty %}
+                        <p class="text-center text-muted">Hozircha ma’lumot yo‘q.</p>
+                        {% endfor %}
+                    </div>
+                
+                    <!-- ✅ Professional Pagination -->
+                    {% if news.paginator.num_pages > 1 %}
+                    <div class="d-flex justify-content-center align-items-center mt-4">
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination">
+                
+                                <!-- Previous button -->
+                                {% if news.has_previous %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ news.previous_page_number }}" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                {% else %}
+                                <li class="page-item disabled">
+                                    <span class="page-link">&laquo;</span>
+                                </li>
+                                {% endif %}
+                
+                                <!-- Page numbers -->
+                                {% for num in news.paginator.page_range %}
+                                    {% if news.number == num %}
+                                        <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+                                    {% elif num > news.number|add:'-3' and num < news.number|add:'3' %}
+                                        <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                                    {% endif %}
+                                {% endfor %}
+                
+                                <!-- Next button -->
+                                {% if news.has_next %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ news.next_page_number }}" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                                {% else %}
+                                <li class="page-item disabled">
+                                    <span class="page-link">&raquo;</span>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </nav>
+                    </div>
+                    {% endif %}
+                </section>
+                
+            </div>
+
+        </div>
+
+{% endblock %}
