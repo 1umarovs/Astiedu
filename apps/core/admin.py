@@ -24,4 +24,7 @@ admin.site.register(Brochures)
 admin.site.register(News)
 admin.site.register(Hostel)
 admin.site.register(HostelImages)
+admin.site.register(Grant)
+admin.site.register(PartnerOrganizations)
+
 

@@ -70,6 +70,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'apps.core.context_processor.translations',
             ],
         },
     },
@@ -77,11 +78,19 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-LANGUAGES = (
+# Default til — English
+LANGUAGE_CODE = 'en'
+
+LANGUAGES = [
     ("uz", "Uzbek"),
-    ("en", "English"),
     ("ru", "Russian"),
-)
+    ("en", "English"),
+]
+
+USE_I18N = True
+USE_TZ = True
+
+LOCALE_PATHS = [BASE_DIR / "locale"]
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
@@ -92,7 +101,7 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-LOCALE_PATHS = [BASE_DIR / "locale"]
+
 
 
 AUTH_USER_MODEL = 'cauth.User'
@@ -118,13 +127,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
 
-USE_I18N = True
-
-USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)

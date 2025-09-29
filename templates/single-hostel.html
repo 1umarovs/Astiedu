@@ -7,12 +7,12 @@
             <ol class="breadcrumb p-3 bg-white rounded-3">
                 <li class="breadcrumb-items px-2">
                     <a class="link-body-emphasis fw-semibold text-decoration-none" href="{% url 'main:home' %}">
-                        Asosiy
+                        {{t.home}}
                     </a>
                 </li>
                 /
                 <li class="breadcrumb-items px-2 active">
-                    <a href="{% url 'main:hostel_for_foreign_students' %}" class="link-body-emphasis text-decoration-none">Xorijiy safarlar va tashriflar</a>
+                    <a href="{% url 'main:hostel_for_foreign_students' %}" class="link-body-emphasis text-decoration-none">{{t.hostel}}</a>
                 </li>
             </ol>
         </nav>
@@ -54,7 +54,7 @@
                     <div class="position-sticky" style="top: 2rem;">
                         <div class="card border-0">
                             <div class="card-body">
-                                <h4 class="fst-italic">Xorijiy safarlar va tashriflar</h4>
+                                <h4 class="fst-italic">{{t.hostel}}</h4>
 
                                 <ul class="list-unstyled">
                                     {% for other in others %}

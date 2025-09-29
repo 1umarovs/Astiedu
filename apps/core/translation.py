@@ -39,6 +39,8 @@ class NewsTranslationOptions(TranslationOptions):
 class HostelTranslationOptions(TranslationOptions):
     fields = ('title', 'description')
 
+class GrantTranslationOptions(TranslationOptions):
+    fields = ('title', 'description')
 
 translator.register(InternationalExchangeProgram, InternationalExchangeProgramTranslationOptions)
 translator.register(AdvancedTraining, AdvancedTrainingTranslationOptions)
@@ -52,3 +54,4 @@ translator.register(EducationalAreas, EducationalAreasTranslationOptions)
 translator.register(Brochures, BrochuresTranslationOptions)
 translator.register(News, NewsTranslationOptions)
 translator.register(Hostel, HostelTranslationOptions)
+translator.register(Grant, GrantTranslationOptions)

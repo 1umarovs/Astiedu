@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from django.conf.urls import handler404
 
 
 app_name = 'main'
@@ -23,4 +24,8 @@ urlpatterns = [
     path('all-news/single/<int:id>/', views.single_news, name='news_single'),
     path('admission/hostel-for-foreign-students/', views.hostel_for_foreign_students, name='hostel_for_foreign_students'),
     path('admission/hostel-for-foreign-students/single/<int:id>/', views.single_hostel, name='hostel_for_foreign_students_single'),
+    path('grants/', views.grants, name='grants'),
+    path('grants/single/<int:id>/', views.single_grant, name='grant_single'),
 ]
+
+handler404 = 'core.views.page_not_found'

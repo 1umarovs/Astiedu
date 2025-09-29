@@ -1,5 +1,5 @@
 from django import forms
-from apps.cauth.models import User, residential_address, GraduatedEducation
+from apps.cauth.models import User, residential_address, GraduatedEducation, Admission
 
 
 class BaseStyledForm(forms.ModelForm):
@@ -84,4 +84,45 @@ class AddressForm(BaseStyledForm):
             "placeholder": "100123",
             "pattern": "^[0-9]{6}$",
             "title": "6 xonali pochta indeksi"
+        })
+
+
+class AdmissionForm(BaseStyledForm):
+    class Meta:
+        model = Admission
+        fields = [
+            "certificate_of_general_secondary_education",
+            "medical_file",
+            "passport",
+            "visa",
+            "photo",
+        ]
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        # Fayllarni required emas qilamiz
+        for field_name in self.fields:
+            self.fields[field_name].required = False
+
+        # Qo‘shimcha attrslar
+        self.fields["certificate_of_general_secondary_education"].widget.attrs.update({
+            "id": "id_certificate_of_general_secondary_education",
+            "placeholder": "{{t.certificate_of_general_secondary_education}}"
+        })
+        self.fields["medical_file"].widget.attrs.update({
+            "id": "id_medical_file",
+            "placeholder": "{{t.medical_file}}"
+        })
+        self.fields["passport"].widget.attrs.update({
+            "id": "id_passport",
+            "placeholder": "{{t.passport}}"
+        })
+        self.fields["visa"].widget.attrs.update({
+            "id": "id_visa",
+            "placeholder": "{{t.visa}}"
+        })
+        self.fields["photo"].widget.attrs.update({
+            "id": "id_photo",
+            "placeholder": "{{t.photo}}"
         })

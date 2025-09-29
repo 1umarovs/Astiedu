@@ -191,3 +191,27 @@ class HostelImages(models.Model):
         verbose_name_plural = 'Hostel Images'
 
 
+class Grant(models.Model):
+    title = models.CharField(max_length=255)
+    description = RichTextField()
+    img = models.ImageField(upload_to='grant/')
+    
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'Grant'
+        verbose_name_plural = 'Grants'
+
+
+class PartnerOrganizations(models.Model):
+    title = models.CharField(max_length=255)
+    img = models.ImageField(upload_to='partner_organizations/')
+    
+    def __str__(self):
+        return self.title
+    
+    class Meta:
+        verbose_name = 'Partner Organization'
+        verbose_name_plural = 'Partner Organizations'

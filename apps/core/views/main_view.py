@@ -1,5 +1,6 @@
 from django.shortcuts import render , get_object_or_404
-from apps.core.models import InternationalExchangeProgram , HonoraryProfessors , InternationalStudents , News , Hostel , HostelImages
+from django.http import HttpResponseNotFound
+from apps.core.models import InternationalExchangeProgram , HonoraryProfessors , InternationalStudents , News , Hostel , HostelImages , Grant , PartnerOrganizations
 from django.core.paginator import Paginator
 
 
@@ -169,8 +170,10 @@ from django.core.paginator import Paginator
 
 def home(request):
     news = News.objects.all()[:3].defer('description' , 'description_uz' , 'description_en' , 'description_ru')
+    partner_organizations = PartnerOrganizations.objects.all()
     context = {
-        'news': news
+        'news': news,
+        'partner_organizations': partner_organizations
     }
     return render(request, 'index.html' , context)
 
@@ -228,3 +231,34 @@ def single_hostel(request , id):
         'images': hostel.images.all()
     }
     return render(request, 'single-hostel.html' , context)
+
+
+def grants(request):
+    grants = Grant.objects.all()
+    paginator = Paginator(grants, 5)
+    page = request.GET.get('page')
+    grants = paginator.get_page(page)
+    context = {
+        'grants': grants
+    }
+    return render(request, 'grants.html', context)
+
+
+def single_grant(request , id):
+    grant = get_object_or_404(
+        Grant.objects.all(),
+        id=id
+    )
+    others = Grant.objects.exclude(id=id)
+    context = {
+        'grant': grant,
+        'others': others,
+    }
+    return render(request, 'grant-single.html' , context)
+
+
+def page_not_found(request, exception):
+    return render(request, '404.html', {'exception': exception}, status=404)
+
+def server_error(request , exception):
+    return render(request, '500.html', {'exception': exception}, status=500)

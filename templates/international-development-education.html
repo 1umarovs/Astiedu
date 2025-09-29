@@ -7,12 +7,12 @@
                     <ol class="breadcrumb p-3 bg-white rounded-3">
                         <li class="breadcrumb-items px-2">
                             <a class="link-body-emphasis fw-semibold text-decoration-none" href="{% url 'main:home' %}">
-                                Asosiy
+                                {{t.home}}
                             </a>
                         </li>
                         /
                         <li class="breadcrumb-items active px-2">
-                         Xorijda malaka oshirish va ta`lim
+                         {{t.advanced_training}}
                         </li>
                     </ol>
                 </nav>
@@ -83,29 +83,28 @@
                         <div class="col-md-4 d-none d-lg-block">
                             <div class="card border-0">
                                 <div class="card-body">
-                                    <h4 class="fz-16 border-bottom pb-2 fw-bold">Xalqaro faoliyat</h4>
+                                    <h4 class="fz-16 border-bottom pb-2 fw-bold">{{t.international_activity}}</h4>
                                     <ul class="rightMenu">
                                         <li>
-                                            <a href="">Grantlar</a>
+                                            <a href="{% url 'main:grants' %}">{{t.grants}}</a>
                                         </li>
                                         <li>
-                                            <a href="{% url 'main:international_development_education' %}">Xorijda malaka oshirish
-                                                va ta`lim</a>
+                                            <a href="{% url 'main:international_development_education' %}">{{t.advanced_training}}</a>
                                         </li>
                                         <li>
-                                            <a href="{% url 'main:international_exchange_program' %}">Xalqaro almashuv dasturi</a>
+                                            <a href="{% url 'main:international_exchange_program' %}">{{t.international_exchange}}</a>
                                         </li>
                                         <li>
-                                            <a href="{% url 'main:foreign_trips' %}">Xorijiy safarlar va tashriflar</a>
+                                            <a href="{% url 'main:foreign_trips' %}">{{t.foreign_trips}}</a>
                                         </li>
                                         <li>
-                                            <a href="{% url 'main:partner_university' %}">Xalqaro hamkor Unversitetlar</a>
+                                            <a href="{% url 'main:partner_university' %}">{{t.partner_universities}}</a>
                                         </li>
                                         <li>
-                                            <a href="{% url 'main:honorary_professors' %}">Xalqaro faxriy professorlar</a>
+                                            <a href="{% url 'main:honorary_professors' %}">{{t.honorary_professors}}</a>
                                         </li>
                                         <li>
-                                            <a href="{% url 'main:international_students' %}">Xorijiy talabalar</a>
+                                            <a href="{% url 'main:international_students' %}">{{t.international_students}}</a>
                                         </li>
                                     </ul>
                                 </div>

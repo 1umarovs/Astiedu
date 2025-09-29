@@ -7,17 +7,17 @@
       <ol class="breadcrumb p-3 bg-white rounded-3">
         <li class="breadcrumb-items px-2">
           <a class="link-body-emphasis fw-semibold text-decoration-none" href="{% url 'main:home' %}">
-            Asosiy
+            {{t.home}}
           </a>
         </li>
         <li class="breadcrumb-items px-2">/</li>
-        <li class="breadcrumb-items px-2 active">Xalqaro talabalar</li>
+        <li class="breadcrumb-items px-2 active">{{t.international_students}}</li>
       </ol>
     </nav>
 
     <section class="students mt-3 mb-5" id="students">
       <div class="title mb-3 d-flex justify-content-between align-items-center">
-        <h4 class="fz-24 p-2">Foreign students</h4>
+        <h4 class="fz-24 p-2">{{t.international_students}}</h4>
       </div>
       <div class="row">
 

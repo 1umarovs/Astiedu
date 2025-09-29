@@ -7,12 +7,12 @@
                     <ol class="breadcrumb p-3 bg-white rounded-3">
                         <li class="breadcrumb-items px-2">
                             <a class="link-body-emphasis fw-semibold text-decoration-none" href="{% url 'main:home' %}">
-                                Asosiy
+                                {{t.home}}
                             </a>
                         </li>
                         /
                         <li class="breadcrumb-items px-2 active">
-                            Xalqaro reyting
+                            {{t.international_ranking}}
                         </li>
                     </ol>
                 </nav>
@@ -36,7 +36,7 @@
                                     <div class="">
                                         <a href="{% url 'main:ranking_single' ranking.id %}"
                                             class="btn btn-primary icon-link gap-1 icon-link-hover stretched-link text-center">
-                                            Batafsil <i class="fas fa-arrow-right-long"></i>
+                                            {{t.more}} <i class="fas fa-arrow-right-long"></i>
                                         </a>
                                     </div>
                                 </div>
