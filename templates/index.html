@@ -38,13 +38,13 @@
                         <h4 class="text-white">
                             <i class="fa-solid fa-bullhorn"></i> {{ t.Admission_title }}
                         </h4>
-                        <a href="{% url 'cauth:admission_redirect' request.user.id %}"
+                        <a href="{% if request.user.is_authenticated %}{% url 'cauth:admission_redirect' request.user.id %}{% endif %}"
                             class="btn btn-lg btn-primary d-lg-block d-none">Use the service <i
                                 class="fa-solid fa-arrow-right-long"></i></a>
                     </div>
                 </div>
                 <div class="card-footer d-lg-none d-block d-flex justify-content-center">
-                    <a href="{% url 'cauth:admission_redirect' request.user.id %}"
+                    <a href="{% if request.user.is_authenticated %}{% url 'cauth:admission_redirect' request.user.id %}{% endif %}"
                         class="text-center text-decoration-none text-success">Use the service <i
                             class="fa-solid fa-arrow-right-long"></i></a>
                 </div>
