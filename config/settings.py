@@ -25,7 +25,14 @@ SECRET_KEY = 'django-insecure-mb_3t_igdm#v(7ai#x2gb+7x4(4suxjw+ah26u5v9g$%k6%^cd
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://international.astiedu.uz/' , 'localhost' , 'http://127.0.0.1/']
+# yoki kengroq (www, ichki IP, localhost ham bo'lsa):
+ALLOWED_HOSTS = [
+    "international.astiedu.uz",
+    "www.international.astiedu.uz",
+    "172.16.254.119",   # agar so‘rov shu IP orqali ham kelishi mumkin bo‘lsa
+    "localhost",
+    "127.0.0.1",
+]
 
 
 # Application definition
