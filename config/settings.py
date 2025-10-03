@@ -23,9 +23,9 @@ import os
 SECRET_KEY = 'django-insecure-mb_3t_igdm#v(7ai#x2gb+7x4(4suxjw+ah26u5v9g$%k6%^cd'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://international.astiedu.uz/' , 'localhost' , 'http://127.0.0.1/']
 
 
 # Application definition
